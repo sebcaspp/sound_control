@@ -9,6 +9,7 @@ pylint = "*"
 [packages]
 "rpi.gpio" = "*"
 gpiozero = "*"
+flask = "==1.0"
 
 [requires]
 python_version = "3.7"
