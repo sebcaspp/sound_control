@@ -14,6 +14,11 @@ class RaspberryGpioController(GpioController):
 
     def toggle_output(self, output):
         output = self.gpio_map[output]
+        output.on()
+        output.off()
+        sleep(0.1)
+        
+        #?
         if output.value == 1:
             output.off()
         else: 
@@ -24,3 +29,6 @@ class RaspberryGpioController(GpioController):
     
     def set_output_low(self, output):
         self.gpio_map[output].off()
+
+   
+
