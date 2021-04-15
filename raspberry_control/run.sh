@@ -2,5 +2,6 @@
 echo "starting service"
 
 #pipenv shell
-python3 -m controller
+pip install -r requirements.txt
+python3 -m control
 

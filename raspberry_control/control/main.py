@@ -1,4 +1,3 @@
-
 from control.facade import *
 
 def main():

@@ -1,5 +1,5 @@
 from flask import Flask,request
-import control.infrastructure.volum_control import VolumeControl
+from control.infrastructure.volum_control import VolumeControl
 
 app = Flask(__name__)
 

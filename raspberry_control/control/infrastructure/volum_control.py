@@ -24,13 +24,13 @@ class VolumeControl():
         new_value_volume:float = (value - self.volume_value)
         if(new_value_volume==0):
             pass
-        else if (new_value_volume < 0):
+        elif (new_value_volume < 0):
             cont:int=0
-            while cont < new_value_volume 
+            while cont < new_value_volume: 
                 self.decrease_volume()
         else: 
             cont:int=0
-            while cont < new_value_volume 
+            while cont < new_value_volume: 
                 self.increase_volume()
         self.volume_value=value
         pass
