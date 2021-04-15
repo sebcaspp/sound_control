@@ -4,7 +4,7 @@ from time import sleep
 
 class RaspberryGpioController(GpioController):
     def __init__(self, name):
-        super(name)
+        #super(name)
         self.gpio_map = {
             self.inc    : Output(14),
             self.up_down: Output(15)
