@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const PORT = 5000;
-const URL = 'http://192.168.0.17:' + PORT;
+const URL = 'http://192.168.0.23:' + PORT;
 const headers = {'Content-Type': 'application/json', 'Content-Type': 'text/html; charset=utf-8' }
 const timeout = 1000
 

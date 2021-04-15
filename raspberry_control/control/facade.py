@@ -14,16 +14,18 @@ def increment():
 
 @app.route('/volum/decrement',methods=['PUT','POST'])
 def decrement():
-    value = request.args.get('decrement')
+    value = request.args.get('value')
     print("decrement:"+value)
     volum_control.decrease_volume()
+    return ''
 
 
 @app.route('/volum/set',methods=['PUT','POST'])
 def volumSet():
-    value = request.args.get('set')
+    value = request.args.get('value')
     print("set:"+value)
     volum_control.set_volume(int(value))
+    return ''
 
 @app.after_request
 def apply_caching(response):
