@@ -7,39 +7,37 @@ class VolumeControl():
         self.gpio_controller = get_gpio_controller()
         self.up_down = self.gpio_controller.up_down
         self.inc     = self.gpio_controller.inc
-        self.volume_value = 0
         self.decrement_to_zero()        
         self.set_volume(volume_value)
         
-    def increase_volume(self) -> int:
+    def increase_volume(self,actual_volume:int) -> int:
         self.gpio_controller.set_output_hight(self.up_down)
         self.gpio_controller.toggle_output(self.inc)
-        self.volume_value = self.volume_value + 1
-        return self.volume_value
+        return actual_volume +1
         
 
-    def decrease_volume(self) -> int:
+    def decrease_volume(self,actual_volume:int) -> int:
         self.gpio_controller.set_output_low(self.up_down)
         self.gpio_controller.toggle_output(self.inc)
-        self.volume_value = self.volume_value -1
-        return self.volume_value
+        return actual_volume -1
         
     
-    def set_volume(self, value) -> int:
-        new_value_volume:int = (self.volume_value - value)
+    def set_volume(self, actual_volume:int, new_volume:int) -> int:
+        new_value_volume:int = ( actual_volume - new_volume)
         if (new_value_volume < 0):
-            while self.volume_value < value:
-                self.increase_volume()  
+            value:int = self.increase_volume()      
+            while value < new_volume:
+                value = self.increase_volume()  
         else: 
-            while self.volume_value > value: 
-                self.decrease_volume()
-        return self.volume_value
+            value:int = self.decrease_volume()      
+            while value > new_volume: 
+                value = self.decrease_volume()
+        return new_volume 
     
     
     def decrement_to_zero(self):   
         for i in range(100):
             self.decrease_volume() 
-        self.volume_value = 0
       
     def mute(self):
         pass
