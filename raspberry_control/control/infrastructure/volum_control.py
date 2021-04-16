@@ -9,30 +9,33 @@ class VolumeControl():
         self.up_down = self.gpio_controller.up_down
         self.inc     = self.gpio_controller.inc
         self.set_volume(volume_value)
+        self.decrementToZero()
 
     def increase_volume(self):
         self.gpio_controller.set_output_hight(self.up_down)
         self.gpio_controller.toggle_output(self.inc)
+        self.volume_value =self.volume_value + 1
         pass
 
     def decrease_volume(self):
         self.gpio_controller.set_output_low(self.up_down)
         self.gpio_controller.toggle_output(self.inc)
+        self.volume_value =self.volume_value -1        
         pass
-
+    
     def set_volume(self, value):
-        new_value_volume:float = (value - self.volume_value)
-        if(new_value_volume==0):
-            pass
-        elif (new_value_volume < 0):
-            cont:int=0
-            while cont < new_value_volume: 
-                self.decrease_volume()
+        new_value_volume:int = (self.volume_value - value)
+        if (new_value_volume < 0):
+            while self.volume_value != value:
+                self.increase_volume()  
         else: 
-            cont:int=0
-            while cont < new_value_volume: 
-                self.increase_volume()
-        self.volume_value=value
+            while self.volume_value != value: 
+            self.decrease_volume()  
+    
+    def decrement_to_zero():   
+        for i in range(100):
+            self.decrement();            
+    def mute():
         pass
 
 
