@@ -1,5 +1,6 @@
-from control.facade import *
+from control.facade import app
+from control.server import host
 
 def main():
     print("iniciando app")
-    app.run(host="0.0.0.0")
+    app.run(host = host)
