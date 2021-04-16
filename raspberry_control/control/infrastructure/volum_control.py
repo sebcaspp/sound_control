@@ -3,12 +3,11 @@ from time import sleep
 
 
 class VolumeControl():
-    def __init__(self, volume_value):
+    def __init__(self):
         self.gpio_controller = get_gpio_controller()
         self.up_down = self.gpio_controller.up_down
         self.inc     = self.gpio_controller.inc
         self.decrement_to_zero()        
-        self.set_volume(volume_value)
         
     def increase_volume(self,actual_volume:int) -> int:
         self.gpio_controller.set_output_hight(self.up_down)
@@ -37,7 +36,7 @@ class VolumeControl():
     
     def decrement_to_zero(self):   
         for i in range(100):
-            self.decrease_volume() 
+            self.decrease_volume(0) 
       
     def mute(self):
         pass
