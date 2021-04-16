@@ -22,9 +22,10 @@ class Controller():
         return self.ok_result(updated_volume)
 
     def set_volume(self,value):
-        actual_value = self.volum_control.set_volume(value)
-        new_value:int = self.volume_repository.set_state(actual_value)
-        return self.ok_result(new_value)
+        actual_volume:int = self.volume_repository.get_actual_state()
+        new_volume = self.volum_control.set_volume(actual_volume,value)
+        updated_volume:int = self.volume_repository.set_state(actual_value)
+        return self.ok_result(updated_volume)
 
     def ok_result(self,value:int):
         return {"actualVolume": value }
