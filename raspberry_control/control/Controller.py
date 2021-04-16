@@ -8,15 +8,18 @@ class Controller():
         self.volume_repository = volume_repository
 
     def increment_volume(self):
-        self.volum_control.increase_volume()
+        actual_value = self.volum_control.increase_volume()
+        self.volume_repository.set_state(actual_value)
         return self.ok_result()
     
     def decrement_volume(self):
-        self.volum_control.decrease_volume()
+        actual_value = self.volum_control.decrease_volume()
+        self.volume_repository.set_state(actual_value)
         return self.ok_result()
 
     def set_volume(self,value):
-        self.volum_control.set_volume(value)
+        actual_value = self.volum_control.set_volume(value)
+        self.volume_repository.set_state(actual_value)
         return self.ok_result()
 
     def ok_result(self):
