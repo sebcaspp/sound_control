@@ -26,11 +26,11 @@ class VolumeControl():
         if (new_value_volume < 0):
             value:int = self.increase_volume(actual_volume)      
             while value < new_volume:
-                value = self.increase_volume(value)  
+                value = self.increase_volume(actual_volume)  
         else: 
-            value:int = self.decrease_volume(value)      
+            value:int = self.decrease_volume(actual_volume)      
             while value > new_volume: 
-                value = self.decrease_volume(value)
+                value = self.decrease_volume(actual_volume)
         return new_volume 
     
     
