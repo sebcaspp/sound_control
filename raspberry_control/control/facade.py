@@ -1,31 +1,23 @@
 from flask import Flask,request
-from control.infrastructure.volum_control import VolumeControl
+from control.server import controller
 
 app = Flask(__name__)
 
-volum_control = VolumeControl(0)
-
 @app.route('/volum/increment',methods=['PUT','POST'])
 def increment():
-    value=request.args.get('value')
-    print("increment"+value)
-    volum_control.increase_volume()
-    return ''
+    result = controller.increment_volume()
+    return result
 
 @app.route('/volum/decrement',methods=['PUT','POST'])
 def decrement():
-    value = request.args.get('value')
-    print("decrement:"+value)
-    volum_control.decrease_volume()
-    return ''
-
+    result = controller.decrement_volume()
+    return result
 
 @app.route('/volum/set',methods=['PUT','POST'])
 def volumSet():
-    value = request.args.get('value')
-    print("set:"+value)
-    volum_control.set_volume(int(value))
-    return ''
+    value  = request.args.get('value')
+    result = controller.set_volume(int(value))
+    return result
 
 @app.after_request
 def apply_caching(response):
