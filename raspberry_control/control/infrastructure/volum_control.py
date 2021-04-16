@@ -30,7 +30,7 @@ class VolumeControl():
                 self.increase_volume()  
         else: 
             while self.volume_value != value: 
-            self.decrease_volume()  
+                self.decrease_volume()  
     
     def decrement_to_zero():   
         for i in range(100):
