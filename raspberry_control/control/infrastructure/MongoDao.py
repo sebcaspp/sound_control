@@ -10,11 +10,11 @@ class MongoDao():
         self.VALUE = "value"
         self.DATE  = "date"
 
-    def get_actual_state(self):
+    def get_actual_state(self) -> int:
         state = self.db.actual_state.find_one()
-        state[self.VALUE]
+        return int(state[self.VALUE])
 
-    def update_state(self, value):
+    def update_state(self, value:int) -> int:
         new_state = { self.VALUE: value,    self.DATE:  datetime.datetime.utcnow()  }
 
         old_state = self.db.actual_state.find_one()
@@ -24,3 +24,4 @@ class MongoDao():
         else:        
             self.db.actual_state.replace_one( { '_id': ObjectId( old_state['_id'] ) }, new_state )
             print("updated")
+        return value
