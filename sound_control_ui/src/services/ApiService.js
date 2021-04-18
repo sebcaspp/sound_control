@@ -6,7 +6,7 @@ const headers = {'Content-Type': 'application/json', 'Content-Type': 'text/html;
 const timeout = 1000
 
 class ApiService {
-  constructor(){
+  constructor() {
     this.axios  = axios.create({
       baseURL: URL,
       timeout: timeout,
@@ -17,11 +17,11 @@ class ApiService {
     get(path, params) {
       return (
         this.axios( {          
-          method: 'put',
+          method: 'get',
           url: path,          
           params: params,
           timeout: timeout,
-        })  
+        } )  
       );
     }
 
