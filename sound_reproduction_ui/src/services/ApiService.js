@@ -3,10 +3,10 @@ const axios = require('axios').default;
 const PORT = 5000;
 const URL = 'http://192.168.0.15:' + PORT;
 const headers = {'Content-Type': 'application/json', 'Content-Type': 'text/html; charset=utf-8' }
-const timeout = 1000
+const timeout = 3000
 
 class ApiService {
-  constructor(){
+  constructor() {
     this.axios  = axios.create({
       baseURL: URL,
       timeout: timeout,

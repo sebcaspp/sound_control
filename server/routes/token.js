@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
   console.log("playerId ->", req.query.playerId);
   getToken()
   .then(function(data) {
+    console.log('token: ', data);
     res.send(data)
   })
 });

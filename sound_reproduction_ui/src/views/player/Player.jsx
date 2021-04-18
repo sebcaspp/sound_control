@@ -25,6 +25,7 @@ export function Player() {
     }, []);
 
     const handleCallback = useCallback(({ type, ...state }) => {
+      console.log('state changed type, sate -> ', type, state );
       if (state.status === STATUS.ERROR && state.errorType === 'authentication_error') {
         console.log("error -> authentication_error")
         localStorage.removeItem('rswp_token');

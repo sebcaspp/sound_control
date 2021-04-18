@@ -44,6 +44,7 @@ function getToken() {
                     return { token: accessToken, expirationTime: expirationTime };
                 },
                 function(error) {
+                    console.log('refreshing token');
                     return (
                     updateToken()
                     .then(
