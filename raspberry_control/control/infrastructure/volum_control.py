@@ -23,15 +23,16 @@ class VolumeControl():
     
     def set_volume(self, actual_volume:int, new_volume:int) -> int:
         new_value_volume:int = ( actual_volume - new_volume)
+        value:int=0
         if (new_value_volume < 0):
-            value:int = self.increase_volume(actual_volume)      
+            value = self.increase_volume(actual_volume)      
             while value < new_volume:
-                value = self.increase_volume(actual_volume)  
+                value = self.increase_volume(value)  
         else: 
-            value:int = self.decrease_volume(actual_volume)      
+            value = self.decrease_volume(actual_volume)      
             while value > new_volume: 
-                value = self.decrease_volume(actual_volume)
-        return new_volume 
+                value = self.decrease_volume(value)
+        return value 
     
     
     def decrement_to_zero(self):   
