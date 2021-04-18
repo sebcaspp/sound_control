@@ -4,7 +4,7 @@ import { tokenUpdated } from '../slices/playerSlice';
 const playerService = {
 
     updateToken: playerId => dispatch =>  {
-      const path = '/updateToken';
+      const path = '/token';
       const params = {
         playerId: playerId
       };
