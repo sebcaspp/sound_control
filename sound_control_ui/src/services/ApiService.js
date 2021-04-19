@@ -6,9 +6,9 @@ const headers = {'Content-Type': 'application/json', 'Content-Type': 'text/html;
 const timeout = 1000
 
 class ApiService {
-  constructor() {
+  constructor(baseUrl) {
     this.axios  = axios.create({
-      baseURL: URL,
+      baseURL: baseUrl || URL,
       timeout: timeout,
       headers: headers
     });
@@ -39,3 +39,7 @@ class ApiService {
 }
 
 export default new ApiService();
+
+export const apiConstructor = function(baseUrl) {
+  return new ApiService(baseUrl)
+}

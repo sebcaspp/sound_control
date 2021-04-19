@@ -5,6 +5,7 @@ var code           = '';
 var accessToken    = '';
 var refreshToken   = '';
 var expirationTime = 10;
+var updateTime     = new Date();
 
 const spotifyApi = new SpotifyWebApi({
     clientId: clientId,
@@ -14,25 +15,38 @@ const spotifyApi = new SpotifyWebApi({
 
 function updateToken() {
     console.log('code->', code);
-    return(        
-    spotifyApi.authorizationCodeGrant(code)
-    .then(
-        function(data) {
-          console.log('The token expires in ' + data.body['expires_in']);
-          console.log('The access token is ' + data.body['access_token']);
-          console.log('The refresh token is ' + data.body['refresh_token']);
+        if(refreshToken==='' || refreshToken === undefined) {
+        return(        
+        spotifyApi.authorizationCodeGrant(code)
+        .then(
+            function(data) {
+                console.log('The token expires in ' + data.body['expires_in']);
+                console.log('The access token is ' + data.body['access_token']);
+                console.log('The refresh token is ' + data.body['refresh_token']);
 
-          accessToken    = data.body['access_token'];
-          refreshToken   = data.body['refresh_token'];
-          expirationTime = data.body['expires_in'];
-      
-          // Set the access token on the API object to use it in later calls
-          spotifyApi.setAccessToken(accessToken);
-          spotifyApi.setRefreshToken(refreshToken);
-          return ({ token: accessToken, expirationTime: expirationTime });
-        }
-      )
-    );
+                accessToken    = data.body['access_token'];
+                refreshToken   = data.body['refresh_token'];
+                expirationTime = data.body['expires_in'];
+                updateTime     = new Date().getTime();
+            
+                // Set the access token on the API object to use it in later calls
+                spotifyApi.setAccessToken(accessToken);
+                spotifyApi.setRefreshToken(refreshToken);
+                return ({ token: accessToken, expirationTime: expirationTime, updateTime: updateTime });
+            }
+        )
+        );
+    }
+    else {
+        return (
+            spotifyApi.refreshAccessToken()
+            .then(function(data) {
+                accessToken    = data.body['access_token'];
+                spotifyApi.setAccessToken(accessToken);
+                return ({ token: accessToken, expirationTime: expirationTime, updateTime: updateTime });
+            }) 
+        );
+    }
 }
 
 function getToken() {
@@ -41,7 +55,7 @@ function getToken() {
             spotifyApi.getMe()
             .then(
                 function(data) {
-                    return { token: accessToken, expirationTime: expirationTime };
+                    return { token: accessToken, expirationTime: expirationTime, updateTime: updateTime };
                 },
                 function(error) {
                     console.log('refreshing token');

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import VolumControlService from '../services/volumControlService'
 
 export const volumSlice = createSlice({
   name: 'volum',
@@ -9,7 +8,6 @@ export const volumSlice = createSlice({
   reducers: {
     increment: state => {
       console.log( "value incremented, actual " + state.value )
-      VolumControlService.incrementVolum();
       state.value += 1;
     },
     decrement: state => {

@@ -13,8 +13,9 @@ const playerService = {
       .then(function (response) {           
         const token = response.data.token
         const expirationTime = response.data.expirationTime
+        const updateTime = response.data.updateTime        
         console.log( "calling server -> " + token, expirationTime);
-        dispatch( tokenUpdated({token: token, expirationTime: expirationTime}) );
+        dispatch( tokenUpdated( { token: token, expirationTime: expirationTime, updateTime: updateTime } ) );
       })
       .catch(function (error) {
         console.log("error calling server -> " + error);

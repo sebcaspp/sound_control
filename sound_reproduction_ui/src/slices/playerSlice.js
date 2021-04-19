@@ -9,9 +9,13 @@ export const playerSlice = createSlice({
   reducers: {
     tokenUpdated: (state, action) => {
       console.log("value changed -> " + action.payload.token);
+      console.log("time update -> " + action.payload.updateTime);
       console.log("actual state -> ", state.value);
+      const detaTime = 300;
+      const timeLeft = action.payload.expirationTime - detaTime - ( new Date().getTime() - action.payload.updateTime )/1000;
       
-      state.expirationTime = action.payload.expirationTime;
+      console.log('time left -> ', timeLeft);
+      state.expirationTime = timeLeft;
       state.value = action.payload.token;
     },
   },
