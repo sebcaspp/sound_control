@@ -15,6 +15,21 @@ function getList() {
     );
 }
 
+
+function getCommonList(listId) {
+    return(
+        spotifyApi
+        .getPlaylist(listId, { limit: 10, offset: 20 })
+        .then(
+            function(data) {
+                console.log('Album information', data.body);
+                return data.body
+            }
+        )
+    );
+}
+
 module.exports = {
-    getList: getList
+    getList       : getList,
+    getCommonList : getCommonList
 }
