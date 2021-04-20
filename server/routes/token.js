@@ -4,7 +4,7 @@ var router = express.Router();
 const authorizeUrl = require('../public/javascripts/spotifyDefinitions').authorizeUrl
 const updateCode   = require('../public/javascripts/SpotifyApi').updateCode
 const updateToken  = require('../public/javascripts/SpotifyApi').updateToken;
-const getToken  = require('../public/javascripts/SpotifyApi').getToken;
+const getToken     = require('../public/javascripts/SpotifyApi').getToken;
 
 
 router.get('/', function(req, res, next) {
