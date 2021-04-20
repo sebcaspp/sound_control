@@ -10,7 +10,7 @@ import Toast from 'react-bootstrap/Toast'
 class TrackComponent extends Component {
 
     render() { 
-        const { track, disableAdd, disableRemove  } = this.props;
+        const { track, disableAdd, disableRemove, add, remove  } = this.props;
 
         return (                                  
                 <Toast show={true} >
@@ -22,8 +22,8 @@ class TrackComponent extends Component {
                   />
                   <strong className="mr-auto">{ track.name }</strong>
                   <small>
-                    <Button variant="primary" size={'sm'} disabled={ disableAdd }>+</Button>
-                    <Button variant="danger"  size={'sm'} disabled={ disableRemove }>-</Button>
+                    <Button variant="primary" size={'sm'} disabled={ disableAdd } onClick={ () => add(track.uri) }>+</Button>
+                    <Button variant="danger"  size={'sm'} disabled={ disableRemove } onClick={ () => remove(track.uri) }>-</Button>
                    </small>
                 </Toast.Header>
                 <Toast.Body>

@@ -17,7 +17,9 @@ import {
   decrementVolum,
   incrementVolum,
   setVolum,
-} from '../../services/volumControlService'
+} from '../../services/volumControlService';
+import { addTrackToQueue } from '../../services/spotifyService'
+
 
 
 
@@ -36,7 +38,9 @@ export function VolumControl() {
         <Container fluid={true}>  
           <Col>
             <TrackListComponent
-              tracks = { tracks }
+              tracks         = { tracks }
+              handleOnAdd    = { ( trackUri ) => addTrackToQueue( trackUri ) }
+              handleOnRemove = { ( trackUri ) => console.log('removing track...', trackUri ) }
             />
           </Col>       
           <Col>

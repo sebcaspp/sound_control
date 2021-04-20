@@ -9,15 +9,17 @@ import TrackComponent from './TrackComponent';
 class TrackListComponent extends Component {
 
     render() { 
-        const { tracks, disableAdd, disableRemove  } = this.props;
+        const { tracks, disableAdd, disableRemove, handleOnAdd, handleOnRemove  } = this.props;
 
         const trackComponents = tracks.map(function(track){
             return( 
                 <Col>
                     <TrackComponent                       
-                        track  = { track }                       
-                        disableAdd = { disableAdd }
-                        disableRemove = { disableRemove }
+                        track          = { track }                       
+                        disableAdd     = { disableAdd }
+                        disableRemove  = { disableRemove }
+                        add            = { handleOnAdd }
+                        remove         = { handleOnRemove }
                     />
                 </Col>                
             );

@@ -29,10 +29,10 @@ function getCommonList(listId) {
     );
 }
 
-function addQueue(trackId){
+function addQueue(trackId) {
     return(
         spotifyApi
-        .addToQueue(trackId,)
+        .addToQueue(trackId)
         .then(
             function(data) {
                 console.log(' Add track to queue ', data.body);

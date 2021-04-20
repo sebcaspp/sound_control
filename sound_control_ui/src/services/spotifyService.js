@@ -29,10 +29,22 @@ const spotifyService = {
             console.log("error getting commonList -> " + error);
           });
     },
+   
+    addTrackToQueue: (trackUri) => {
+      const path = '/queue/'+trackUri;
+      const params = { };
 
+      apiService.put(path, params)
+        .then(function (response) {            
+            console.log( "adding track to queue response -> " + response );                        
+          })
+          .catch(function (error) {
+            console.log("error adding track to queue -> " + error);
+          });
+    },
 
 };
 
 export default spotifyService;
 
-export const { getCommontList } = spotifyService;
+export const { getCommontList, addTrackToQueue } = spotifyService;
