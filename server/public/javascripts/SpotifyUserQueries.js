@@ -29,7 +29,20 @@ function getCommonList(listId) {
     );
 }
 
+function addQueue(trackId){
+    return(
+        spotifyApi
+        .addToQueue(trackId,)
+        .then(
+            function(data) {
+                console.log(' Add track to queue ', data.body);
+                return data.body
+            }
+        )
+    );
+}
 module.exports = {
+    addQueue     : addQueue,
     getList       : getList,
     getCommonList : getCommonList
-}
+}   
