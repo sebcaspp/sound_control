@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 import TrackComponent from './TrackComponent';
-
 
 class TrackListComponent extends Component {
 
@@ -10,21 +12,23 @@ class TrackListComponent extends Component {
         const { tracks, disableAdd, disableRemove  } = this.props;
 
         const trackComponents = tracks.map(function(track){
-            return(
-                <ListGroup.Item>
+            return( 
+                <Col>
                     <TrackComponent                       
-                        track  = { { name: 'track' } }                       
+                        track  = { track }                       
                         disableAdd = { disableAdd }
                         disableRemove = { disableRemove }
-                   />
-                </ListGroup.Item>
+                    />
+                </Col>                
             );
         });
 
-        return ( 
-            <ListGroup>
-                { trackComponents }
-            </ListGroup>
+        return (
+                <Container fluid={true}>
+                    <Row lg={1} md={2} sm={1} >
+                        { trackComponents }
+                    </Row>                    
+                </Container>
           );
     }    
 

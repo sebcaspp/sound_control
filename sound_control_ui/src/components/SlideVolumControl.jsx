@@ -13,8 +13,7 @@ class SlideVolumControl extends Component {
     render() { 
         const { disabled, handleOnChange, value } = this.props;
 
-        return ( 
-            <div className="d-flex p-5">
+        return (     
                 <RangeSlider
                     className="slider"
                     value           = { value }
@@ -24,7 +23,6 @@ class SlideVolumControl extends Component {
                     min             = { this.state.min }          
                     disabled        = { disabled }
                 /> 
-            </div>
           );
     }    
 

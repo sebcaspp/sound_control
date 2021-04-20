@@ -4,7 +4,7 @@ export const playerSlice = createSlice({
   name: 'token',
   initialState: {
     value: '',
-    expirationTime: 10
+    expirationTime: 1
   },
   reducers: {
     tokenUpdated: (state, action) => {
@@ -12,7 +12,7 @@ export const playerSlice = createSlice({
       console.log("time update -> " + action.payload.updateTime);
       console.log("actual state -> ", state.value);
       const detaTime = 300;
-      const timeLeft = action.payload.expirationTime - detaTime - ( new Date().getTime() - action.payload.updateTime )/1000;
+      const timeLeft = (action.payload.expirationTime - detaTime)*1000 - ( new Date().getTime() - action.payload.updateTime );
       
       console.log('time left -> ', timeLeft);
       state.expirationTime = timeLeft;

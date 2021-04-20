@@ -33,17 +33,17 @@ export function VolumControl() {
     }, []);
 
     return ( 
-        <Container>
-          <Row>
+        <Container fluid={true}>  
+          <Col>
             <TrackListComponent
               tracks = { tracks }
             />
-          </Row>
-          <Row md={3} >
-            <Button variant="primary" size="sm" onClick={ () => dispatch( incrementVolum() ) } >
+          </Col>       
+          <Col>
+            <Button variant="primary" onClick={ () => dispatch( incrementVolum() ) } >
             +
             </Button>
-            <Button variant="primary" size="sm" onClick={ () => dispatch( decrementVolum() ) } >
+            <Button variant="primary" onClick={ () => dispatch( decrementVolum() ) } >
             -
             </Button>
             <SlideVolumControl 
@@ -51,7 +51,7 @@ export function VolumControl() {
               disable = { false }
               handleOnChange = { ( event ) => dispatch( setVolum( event.target.value ) ) } 
             />
-          </Row>
+          </Col>          
         </Container>
      );
 }

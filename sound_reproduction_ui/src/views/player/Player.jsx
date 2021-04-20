@@ -12,22 +12,20 @@ export function Player() {
     const dispatch = useDispatch();
 
     const [playerId, setPlayerId] = useState('player-id-1');
-    
-    function scheduleUPdateToken(playerId, timeOut) {
-      setTimeout(() => {
-        dispatch( updateToken(playerId) )
-      }, timeOut);
-    }
 
-    useEffect(() => {
-      dispatch( updateToken(playerId) )
-      scheduleUPdateToken(playerId, expirationTime)    
-    }, []);
+    useEffect(() => {     
+      const timeout = setTimeout(() => {
+         console.log('updating token...');
+        dispatch( updateToken(playerId) );
+      }, expirationTime);
+  
+     return () => clearTimeout(timeout);
+    }, [expirationTime]);
 
     const handleCallback = useCallback(({ type, ...state }) => {
       console.log('state changed type, sate -> ', type, state );
       if (state.status === STATUS.ERROR && state.errorType === 'authentication_error') {
-        console.log("error -> authentication_error")
+        console.log("error -> authentication_error");
         localStorage.removeItem('rswp_token');
         dispatch( updateToken(playerId) );
       }
