@@ -1,25 +1,9 @@
 const spotifyApi = require('./SpotifyApi').spotifyApi;
 
-
-
-function getList() {
+function getList(listId) {
     return(
         spotifyApi
-        .getAlbum('6Kc8A5gqFZjDUeq77xSAK6', { limit: 10, offset: 20 })
-        .then(
-            function(data) {
-                console.log('Album information', data.body);
-                return data.body
-            }
-        )
-    );
-}
-
-
-function getCommonList(listId) {
-    return(
-        spotifyApi
-        .getPlaylist(listId, { limit: 10, offset: 20 })
+        .getPlaylist(listId, {limit: 100, offset: 0})
         .then(
             function(data) {
                 console.log('Album information', data.body);
@@ -58,7 +42,7 @@ function getnameId(){
 function getPlaylist(nameId){
     return(
         spotifyApi
-        .getUserPlaylists(nameId)
+        .getUserPlaylists(nameId, {limit: 50, offset: 0})
         .then(
             function(data) {
                 console.log(' ', data.body);
@@ -73,5 +57,4 @@ module.exports = {
     getnameId     : getnameId,
     addQueue      : addQueue,
     getList       : getList,
-    getCommonList : getCommonList
 }   

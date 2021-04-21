@@ -2,9 +2,9 @@ var express = require('express');
 var router  = express.Router();
 var getPlaylist = require('../public/javascripts/SpotifyUserQueries').getPlaylist
 
-router.get('/:playlistsId',function(req,res,next){
-    const PlaylistsId = req.params.userPlaylists;
-    getPlaylist(userPlaylists)
+router.get('/:userId',function(req,res,next){
+    const userId = req.params.userId;
+    getPlaylist(userId)
     .then(
         function(data) {
           res.send(data)

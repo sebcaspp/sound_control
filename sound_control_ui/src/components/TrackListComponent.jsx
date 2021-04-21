@@ -27,7 +27,7 @@ class TrackListComponent extends Component {
 
         return (
                 <Container fluid={true}>
-                    <Row lg={1} md={2} sm={1} >
+                    <Row lg={4} md={2} sm={1} >
                         { trackComponents }
                     </Row>                    
                 </Container>
