@@ -12,7 +12,7 @@ router.put('/:trackUri', function(req, res, next) {
       res.send(data)
     },
     function(error) {
-      console.log("error getting access token:", error);      
+      console.log("error add trackUri:", error);      
       res.send({ error: 'error add track' })
     }
   )

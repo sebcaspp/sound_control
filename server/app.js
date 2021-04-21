@@ -5,11 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
-var indexRouter = require('./routes/index');
-var tokenRouter = require('./routes/token');
-var queryRouter = require('./routes/query');
-var queueRouter = require('./routes/queue');
-
+var indexRouter     = require('./routes/index');
+var tokenRouter     = require('./routes/token');
+var queryRouter     = require('./routes/query');
+var queueRouter     = require('./routes/queue');
+var playlistsRouter = require('./routes/playLists')
+var userRouter      = require('./routes/user')
 var app = express();
 app.use(cors());
 
@@ -27,6 +28,8 @@ app.use('/', indexRouter);
 app.use('/token', tokenRouter);
 app.use('/query', queryRouter);
 app.use('/queue', queueRouter);
+app.use('/user',userRouter);
+app.use('/playList',playlistsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

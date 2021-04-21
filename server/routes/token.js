@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router  = express.Router();
 
 const authorizeUrl = require('../public/javascripts/spotifyDefinitions').authorizeUrl
 const updateCode   = require('../public/javascripts/SpotifyApi').updateCode
