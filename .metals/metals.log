@@ -15,3 +15,8 @@ INFORMACIÓN: Unsupported notification method: $/setTraceNotification
 [0m2021.03.30 23:16:40 INFO  time: initialize in 1.42s[0m
 [0m2021.03.30 23:16:42 WARN  Build server is not auto-connectable.[0m
 [0m2021.03.30 23:16:42 WARN  no build tool detected in workspace '/home/dgc7/Proyectos/sound_control'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.04.20 15:35:14 INFO  Started: Metals version 0.10.1 in workspace '/home/dgc7/Proyectos/sound_control' for client vscode 1.55.2.[0m
+[0m2021.04.20 15:35:15 INFO  time: initialize in 1.39s[0m
+[0m2021.04.20 15:35:17 WARN  Build server is not auto-connectable.[0m
+[0m2021.04.20 15:35:17 WARN  no build tool detected in workspace '/home/dgc7/Proyectos/sound_control'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.04.20 18:21:50 INFO  shutting down Metals[0m
